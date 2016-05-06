@@ -1,0 +1,262 @@
+<!--
+Title:Lab2.html
+
+Description: Comp 484 lab 2
+
+Author:Joseph Hoxsey
+
+-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+		<style>
+			.buttonStyle	{
+				width: 55px;
+				height: 30px;
+			}
+			
+			#btnSave {
+				width: 173px;
+				height: 30px;
+			}
+		</style>
+        <script>
+            var calculator;
+			var workSaved;
+			var namepattern;
+			var errorspacing
+			var firstname;
+			var lastname;
+			var id;
+			var bio;
+			var errorfirst;
+			var errorlast;
+			var errorid;
+			var errorbio;
+			var form;
+			
+			function flagNames()	{
+				var debuggingString = firstname.value;
+				var errorflag = 0;
+				var eString;
+				var eColor;
+				// check first name
+				if(!(debuggingString.match(namepattern)) || (debuggingString.match(errorspacing)))	{
+					eString = "ERROR: First name format is incorrect! <br>Make sure "+
+									"the first letter is capitalize with no spaces.";
+					eColor = eString.fontcolor("red");
+					errorfirst.innerHTML = eColor;
+					errorflag++;
+					
+				}else	{
+					errorfirst.innerHTML = "";
+				}
+				// check last name
+				debuggingString = lastname.value;
+				if(!(debuggingString.match(namepattern)) || (debuggingString.match(errorspacing)))	{
+					eString = "ERROR: Last name format is incorrect! <br>Make sure "+
+									"the first letter is capitalize with no spaces.";
+					eColor = eString.fontcolor("red");
+					errorlast.innerHTML = eColor;
+					errorflag++;
+					
+				}else	{
+					errorlast.innerHTML = "";
+				}
+				return errorflag;
+			}
+			/*
+			function flagCalculator()	{
+				var c = calculator.value;
+				var w = workSaved.innerHTML;
+				var eString, eColor;
+				var errorflag = 0;
+				if(c == "")	{
+					eString = "ERROR: The calculator needs inputs!";
+					eColor = eString.fontcolor("red");
+					workSaved.innerHTML = eColor;
+					errorflag++;
+				}
+				else if	((c > 0 && w == "")){
+					eString = "ERROR: You need to save your hours!";
+					eColor = eString.fontcolor("red");
+					workSaved.innerHTML = eColor;
+					errorflag++;
+				}
+				return errorflag;
+			}*/
+			
+			function flagID()	{
+				// check ID
+				var debuggingString = id.value;
+				var eString, eColor;
+				var errorflag = 0;
+				if(debuggingString.length != 9)	{
+					eString = "ERROR: ID format is incorrect! <br>The ID "+
+									"must contains 9 digits.";
+					eColor = eString.fontcolor("red");
+					errorid.innerHTML = eColor;
+					errorflag++;
+					
+				}else	{
+					errorid.innerHTML = "";
+				}
+				return errorflag;
+			}
+			
+			function flagBio()	{
+				var b = bio.value;
+				var errorflag = 0;
+				var eString, eColor, errorflag;
+				if((b.match(/\s/g)).length > 24)	{
+					errorflag++;
+					eString = "ERROR: Your bio contains too many words! Keep biography to 25 words max.";
+					eColor = eString.fontcolor("red");
+					errorbio.innerHTML = ec;
+				}
+				return errorflag;
+			
+			}
+			
+			function submit(e)	{
+				// check if there is any errorflags
+				if(flagBio()+flagID()+flagNames() < 1)	{
+					form.style.backgroundColor = "white";
+					
+					window.alert(
+						"First Name: " + firstname.value +
+						"\nLast Name: " + lastname.value +
+						"\nStudent ID: " + id.value +
+						"\nBiography: " + bio.value +
+						"\nCalculator Input: " + calculator.value +
+						"\nHours worked this week: " + workSaved.innerHTML +
+						"\nThe Form was successively submitted!"
+					);
+					
+				}	else	{
+					form.style.backgroundColor = "pink";
+				}
+				
+				e.preventDefault();
+			
+			}
+			
+			function save()	{
+				if(calculator.value == "")	{
+					var error = "ERROR:  Not a valid number of hours worked";
+					var eColor = error.fontcolor("red");
+					workSaved.innerHTML = eColor;
+				}
+				else 	{
+					workSaved.innerHTML = calculator.value;
+				}
+				
+			}
+			
+			function btnClicked(x)	{
+				switch(x)	{
+					case 10: calculator.value = calculator.value << 1; 
+						break;
+					case 11: calculator.value = calculator.value >> 1; 
+						break;
+					case 12: calculator.value = ""; 
+						break;
+					default: calculator.value = calculator.value + x; 
+						break;
+				}
+				
+			}
+
+            function start() {
+                // The calculator display
+                calculator = document.getElementById("results");
+				workSaved = document.getElementById("hoursWorked");
+				firstname= document.getElementById("firstname");
+				lastname = document.getElementById("lastname");
+				id = document.getElementById("studentID");
+				bio = document.getElementById("biography");
+				errorfirst= document.getElementById("errorFirst");
+				errorlast = document.getElementById("errorLast");
+				errorid = document.getElementById("errorID");
+				errorbio = document.getElementById("errorBio");
+				form = document.getElementById("formblock");
+				namepattern = new RegExp("[A-Z][a-z]+","m");
+				errorspacing = new RegExp("\\s","m");
+				
+                document.getElementById("btn0").addEventListener("click", function () { btnClicked(0); });
+                document.getElementById("btn1").addEventListener("click", function () { btnClicked(1); });
+                document.getElementById("btn2").addEventListener("click", function () { btnClicked(2); });
+                document.getElementById("btn3").addEventListener("click", function () { btnClicked(3); });
+                document.getElementById("btn4").addEventListener("click", function () { btnClicked(4); });
+                document.getElementById("btn5").addEventListener("click", function () { btnClicked(5); });
+                document.getElementById("btn6").addEventListener("click", function () { btnClicked(6); });
+                document.getElementById("btn7").addEventListener("click", function () { btnClicked(7); });
+                document.getElementById("btn8").addEventListener("click", function () { btnClicked(8); });
+                document.getElementById("btn9").addEventListener("click", function () { btnClicked(9); });
+				
+                document.getElementById("btnShiftLeft").addEventListener("click", function () { btnClicked(10); });
+                document.getElementById("btnShiftRight").addEventListener("click", function () { btnClicked(11); });
+                document.getElementById("btnClear").addEventListener("click", function () { btnClicked(12); });
+				document.getElementById("btnSave").addEventListener("click", save);
+				document.getElementById("btnSubmit").addEventListener("click", submit);
+            }
+
+            window.addEventListener("load", start, false);
+
+        </script>
+    </head>
+
+    <body>
+		<div id="formblock">
+			<form>
+				First Name: <br>
+				<input type="text" id="firstname"><br>
+				<div id="errorFirst"></div>
+				Last Name: <br>
+				<input type="text" id="lastname"><br>
+				<div id="errorLast"></div>
+				Student ID: <br>
+				<input type="number" id="studentID" ><br>
+				<div id="errorID"></div>
+				Biography: <br>
+				<textarea id="biography" rows="4" cols="50">This is where you input your biography...</textarea>
+				<div id="errorBio"></div>
+			</form>
+		</div>
+		<div id="calculator">
+			<h1>Calculator</h1>
+			<input type="text" id="results"disabled></input>
+			<br>
+			<button class="buttonStyle" id="btnShiftLeft"><<</button>
+			<button class="buttonStyle" id="btnClear">C</button>
+			<button class="buttonStyle" id="btnShiftRight">>></button>
+			<br>
+			<button class="buttonStyle" id="btn7">7</button>
+			<button class="buttonStyle" id="btn8">8</button>
+			<button class="buttonStyle" id="btn9">9</button>
+			<br>
+			<button class="buttonStyle" id="btn4">4</button>
+			<button class="buttonStyle" id="btn5">5</button>
+			<button class="buttonStyle" id="btn6">6</button>
+			<br>
+			<button class="buttonStyle" id="btn1">1</button>
+			<button class="buttonStyle" id="btn2">2</button>
+			<button class="buttonStyle" id="btn3">3</button>
+			<br>
+			<button class="buttonStyle">|</button>
+			<button class="buttonStyle" id="btn0">0</button>
+			<button class="buttonStyle">|</button>
+			<br>
+			<button id="btnSave">Save</button>
+			<br>
+		
+			<div>Hours worked this week:</div>
+			<span id="hoursWorked"></span><br>
+			<button id="btnSubmit">SUBMIT</button>
+		</div>
+
+
+    </body>
+</html>
