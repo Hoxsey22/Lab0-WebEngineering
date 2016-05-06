@@ -1,0 +1,111 @@
+/*
+Title:Lab1.css
+
+Description: Comp 484 lab 1
+
+Author:Joseph Hoxsey
+
+*/
+
+
+
+#pagebox {
+	border-style: solid;
+    border-width: 6px;
+	padding:10px;
+	center
+	width: 100%;
+	height: 100%;
+	overflow:hidden;
+	background-color:white;
+}
+
+#title {
+	border-style: solid;
+    border-width: 1px;
+	padding:5px;
+	text-align: right;
+	background-color: lightblue;
+	height:20%;
+	font-size:100%;
+}
+
+#bodywrapper	{
+	width: 100%;
+	height: 80%;
+}
+
+#friendslist {
+	border-style: solid;
+    border-width: 4px;
+	border-color:black;
+	margin-top: 10px;
+	padding-left:5px;
+	background-color: purple;
+	text-align: left;
+	width:15%;
+	float: left;
+	color: white;
+	font-size:100%;
+}
+
+#entrybox {
+	margin-top:10px;
+	float: right;
+	width:82%;
+}
+
+#entry1,#entry2 {
+	border-style: solid;
+    border-width: 3px;
+	margin-bottom:10px;
+	background-color: olive;
+	padding:5px;
+	float:right;
+	font-size:100%;
+	width:100%
+}
+#entrytext	{
+	width: 79%;
+	float: left;
+}
+#entryimage	{
+	width:20%
+	float: right;
+}
+
+a	{
+	text-decoration:none;
+	color: white;
+}
+
+a:hover	{
+	color:red;
+	text-decoration:underline;
+	
+}
+
+img	{
+	width:200px;
+	float: right;
+	overflow:hidden;
+}
+
+p	{
+	float:left;
+	
+}
+
+body	{
+	background-color:darkblue;
+}
+
+body *:hover
+{
+    background-color: yellow;
+}
+
+
+
+
+
