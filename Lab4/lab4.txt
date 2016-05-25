@@ -1,0 +1,54 @@
+==============================
+			README
+==============================
+
+Title: Lab4
+Author: Joseph Hoxsey
+==============================
+
+addmessage.php
+===============
+Inserts the message into the db
+
+addnewuser.php
+===============
+Inserts a new user into the db
+
+lab4.php
+===============
+Main page where the user will log in
+
+lab4.sql
+===============
+My db
+
+lab4_register.php
+==================
+A page for the user to complete registering
+
+lab4_success.php
+=================
+A page for the user to go after successfully 
+logging in and fill in the message
+
+login.php
+================
+Calls the db to check if the user is registered
+
+mailer.php
+================
+This script for the cron job
+
+Completion
+===========
+I have completed all task that was asked
+in the project description.
+
+Extra Credit
+=============
+A.) Added salting to the password (See in login.php & addnewuser.php)
+B.) I made sure the user must have certain requirements
+for their password. (See lab4_register.php)
+
+
+
